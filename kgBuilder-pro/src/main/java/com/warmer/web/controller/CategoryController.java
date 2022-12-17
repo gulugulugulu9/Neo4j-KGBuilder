@@ -25,7 +25,6 @@ public class CategoryController extends BaseController{
     public R<String> importKGNodes(Long categoryId, Integer parentId, HttpServletRequest request) {
         if (parentId == null) {
             parentId = 0;
-
         }
         String  parentCode="";
         CategoryNode searchCategoryDetail = categoryNodeService.selectByPrimaryKey(parentId);

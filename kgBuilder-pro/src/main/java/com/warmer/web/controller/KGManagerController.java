@@ -16,6 +16,7 @@ import com.warmer.web.request.*;
 import com.warmer.web.service.FeedBackService;
 import com.warmer.web.service.KgGraphService;
 import com.warmer.web.service.KnowledgeGraphService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -29,6 +30,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Slf4j
 @Controller
 @RequestMapping(value = "/")
 public class KGManagerController extends BaseController {
@@ -168,6 +170,7 @@ public class KGManagerController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/updateCoordinateOfNode")
     public R<String> updateCoordinateOfNode(@RequestBody NodeCoordinateSubmitItem request) {
+        log.info(request.toString());
         try {
             String domain=request.getDomain();
             List<NodeCoordinateItem> nodes = request.getNodes();

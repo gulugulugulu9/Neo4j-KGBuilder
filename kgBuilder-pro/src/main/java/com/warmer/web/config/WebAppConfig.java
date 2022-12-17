@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Data
 public class WebAppConfig{
-
+//七牛云配置
     /**
      * 在配置文件中配置的文件保存路径
      */

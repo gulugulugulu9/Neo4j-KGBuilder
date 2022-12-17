@@ -633,11 +633,15 @@ public class KGGraphRepository implements KGGraphDao {
             e.printStackTrace();
         }
     }
+
+//    批更新
     @Override
     public void batchUpdateGraphNodesCoordinate(String domain,List<NodeCoordinateItem> params) {
         try {
             if (params != null && params.size() > 0) {
                 String nodeStr = Neo4jUtil.getFilterPropertiesJson(JsonHelper.toJSONString(params));
+                System.out.println("nodestr ::: " + nodeStr);
+                System.out.println("domin:::" + domain);
                 String nodeCypher = String
                         .format("UNWIND %s as row " + " MATCH (n:`%s`)  where id(n)=row.uuid SET n.fx=row.fx,n.fy=row.fy", nodeStr, domain);
                 Neo4jUtil.runCypherSql(nodeCypher);
@@ -705,6 +709,8 @@ public class KGGraphRepository implements KGGraphDao {
             e.printStackTrace();
         }
     }
+
+//    每次都移动都更改位置坐标信息
     @Override
     public void updateCoordinateOfNode(String domain, String uuid, Double fx, Double fy) {
         String cypher = null;
